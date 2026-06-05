@@ -33,7 +33,7 @@ public:
         }
         sort(arr.begin() , arr.end(), cp);
         for( int i =  0; i<arr.size() ; i++){
-            cout<< arr[i]->val << " ";
+            // cout<< arr[i]->val << " ";
             t->next = arr[i];
             t = t->next;
         }
