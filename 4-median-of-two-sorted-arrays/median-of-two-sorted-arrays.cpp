@@ -29,10 +29,6 @@ public:
             r++;
         }
 
-        for( int i : arr3){
-            cout<< i << " ";
-        }
-
         double median;
         int size = arr3.size();
         if( size % 2 != 0){
