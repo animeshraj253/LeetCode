@@ -12,28 +12,31 @@
 class Solution {
 public:
 
-    int d = 0 ;
+    
+    pair < int, int> diameterFast(TreeNode * root){
+        if( root == NULL){
+            pair<int, int> p = make_pair(0,0);
+            return p;
+        }
 
-    int height( TreeNode * root){
-        if( root == NULL) return 0;
+        pair<int, int > left = diameterFast(root->left);
+        pair< int, int> right = diameterFast(root -> right);
 
-        int left = height(root->left);
-        int right = height ( root->right);
 
-        d = max(d , left + right);
+        int op1 = left.first;
+        int op2 = right.first;
+        int op3 = left.second + right.second ;
 
-        int h = max( left, right) + 1;
-        return h;
+        pair<int,int> ans;
+        ans.first = max( op1, max(op2, op3));
+        ans.second = max( left.second, right.second)+1;
+
+        return ans;
+
     }
 
     int diameterOfBinaryTree(TreeNode* root) {
-        
-        if( root == NULL){
-            return 0;
-        }
-
-        height(root);
-
-        return d;
+    
+        return diameterFast(root).first;
     }
 };
